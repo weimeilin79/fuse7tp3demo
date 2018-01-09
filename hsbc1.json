@@ -1,0 +1,821 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API",
+    "description": "",
+    "license": {
+      "name": "MIT",
+      "url": "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT"
+    }
+  },
+  "host": "api.hsbc.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/open-banking/v1.2/atms": {
+      "get": {
+        "description": "This API will return data about all our ATMs and is prepared to the Open Banking standards as defined by the Open Banking Implementation Entity (OBIE) in data dictionary version 1.2.4. It is regulated by the UK Competition and Markets Authority (CMA). Data is only available for the United Kingdom.",
+        "summary": "OpenBankingV12Atms",
+        "tags": [
+          "ATMs"
+        ],
+        "operationId": "OpenBankingV12AtmsGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ATMDefinitionMeta"
+            },
+            "examples": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "408": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "429": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "default": {
+            "description": "System error",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "503": {
+            "description": "System error",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/x-open-banking/v1.2/atms/country/{country}": {
+      "get": {
+        "description": "This extended API will return data about all ATMs in the specified country. It is based-on the Open Banking standards as defined by the Open Banking Implementation Entity (OBIE) in data dictionary version 1.2.4. The extended functionality may not fully adhere to the non-functional requirements of the regulator. Data is only available for the United Kingdom.",
+        "summary": "XOpenBankingV12AtmsCountryByCountry",
+        "tags": [
+          "ATMs"
+        ],
+        "operationId": "XOpenBankingV12AtmsCountryByCountryGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "country",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ISO country code e.g. &quot;GB&quot;"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ATMDefinitionMeta"
+            },
+            "examples": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "408": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "429": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "default": {
+            "description": "System error",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "503": {
+            "description": "System error",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/x-open-banking/v1.2/atms/postcode/{postcode}": {
+      "get": {
+        "description": "This extended API will return data about all ATMs within a 5 mile radius of the specified postcode. It is based-on the Open Banking standards as defined by the Open Banking Implementation Entity (OBIE) in data dictionary version 1.2.4. The extended functionality may not fully adhere to the non-functional requirements of the regulator. Data is only available for the United Kingdom.",
+        "summary": "XOpenBankingV12AtmsPostcodeByPostcode",
+        "tags": [
+          "ATMs"
+        ],
+        "operationId": "XOpenBankingV12AtmsPostcodeByPostcodeGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Letters and numerals only. No spaces or special characters. eg  &quotSW1A1AA&quot"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ATM"
+              }
+            },
+            "examples": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "408": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "429": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "default": {
+            "description": "System error",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "503": {
+            "description": "System error",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/x-open-banking/v1.2/atms/country/{country}/town/{town}": {
+      "get": {
+        "description": "This extended API will return data about all ATMs in the specified town. It is based-on the Open Banking standards as defined by the Open Banking Implementation Entity (OBIE) in data dictionary version 1.2.4. The extended functionality may not fully adhere to the non-functional requirements of the regulator. Data is only available for the United Kingdom.",
+        "summary": "XOpenBankingV12AtmsCountryTownByCountry",
+        "tags": [
+          "ATMs"
+        ],
+        "operationId": "XOpenBankingV12AtmsCountryTownByCountryAndTownGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "country",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The ISO country code e.g. &quot;GB&quot;"
+          },
+          {
+            "name": "town",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Town name, not case sensitive"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ATMDefinitionMeta"
+            },
+            "examples": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "408": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "429": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "default": {
+            "description": "System error",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "503": {
+            "description": "System error",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/x-open-banking/v1.2/atms/geo-location/lat/{latitude}/long/{longitude}": {
+      "get": {
+        "description": "This extended API will data about all ATMs within a specified radius (1 to 10 miles) of the specified latitude and longitude. It is based-on the Open Banking standards as defined by the Open Banking Implementation Entity (OBIE) in data dictionary version 1.2.4. The extended functionality may not fully adhere to the non-functional requirements of the regulator. Data is only available for the United Kingdom.",
+        "summary": "XOpenBankingV12AtmsGeoLocationLatLong",
+        "tags": [
+          "ATMs"
+        ],
+        "operationId": "XOpenBankingV12AtmsGeoLocationLatLongByLatitudeAndLongitudeGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "latitude",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Positive or negative decimal value in degrees. eg &quot51.50551621597067&quot"
+          },
+          {
+            "name": "longitude",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Positive or negative decimal value in degrees. eg &quot-0.0180120225995&quot"
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": true,
+            "type": "number",
+            "format": "double",
+            "description": "Number of miles (1 to 10) as an integer. Default = 1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ATM"
+              }
+            },
+            "examples": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "408": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "429": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "default": {
+            "description": "System error",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          },
+          "503": {
+            "description": "System error",
+            "schema": {
+              "$ref": "#/definitions/400ErrorObject"
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ATMDefinitionMeta": {
+      "title": "ATMDefinitionMeta",
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/MetaData"
+        },
+        "data": {
+          "description": "",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ATM"
+          }
+        }
+      },
+      "required": [
+        "meta",
+        "data"
+      ]
+    },
+    "MetaData": {
+      "title": "Meta data",
+      "type": "object",
+      "properties": {
+        "LastUpdated": {
+          "description": "",
+          "type": "string",
+          "format": "date-time"
+        },
+        "TotalResults": {
+          "description": "",
+          "type": "integer",
+          "format": "int32"
+        },
+        "Agreement": {
+          "description": "",
+          "example": "Use of the APIs and any related data will be subject to the terms of the Open Licence and subject to terms and conditions",
+          "type": "string"
+        },
+        "License": {
+          "description": "Open Banking License",
+          "example": "https://openbanking.org.uk/open-licence",
+          "type": "string"
+        },
+        "TermsOfUse": {
+          "description": "Open Banking Terms of Use",
+          "example": "https://openbanking.org.uk/terms",
+          "type": "string"
+        }
+      },
+      "required": [
+        "LastUpdated",
+        "TotalResults",
+        "Agreement",
+        "License",
+        "TermsOfUse"
+      ]
+    },
+    "ATM": {
+      "title": "ATM",
+      "type": "object",
+      "properties": {
+        "Organisation": {
+          "$ref": "#/definitions/Organisation"
+        },
+        "ATMID": {
+          "description": "ATM terminal device identification for the acquirer and the issuer",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        },
+        "Address": {
+          "$ref": "#/definitions/Address"
+        },
+        "GeographicLocation": {
+          "$ref": "#/definitions/GeographicLocation"
+        },
+        "SupportedLanguages": {
+          "description": "Languages that the ATM supports",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "ATMServices": {
+          "description": "Information about ATM services",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ATMService"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "Currency": {
+          "description": "Defines currency type available for dispense",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "[A-Z]{3}"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "BranchIdentification": {
+          "description": "Unique and unambiguous identification of a retail branch of a financial institution",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        },
+        "LocationCategory": {
+          "$ref": "#/definitions/LocationCategory"
+        },
+        "SiteID": {
+          "description": "Site identifying code, where ATM is located",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        },
+        "SiteName": {
+          "description": "Site identifying name, where ATM is located",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        },
+        "AccessibilityTypes": {
+          "description": "Information about the accessibility",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccessibilityType"
+          },
+          "uniqueItems": true
+        },
+        "AdditionalATMServices": {
+          "description": "ATM Service Description",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 350
+          }
+        },
+        "MinimumValueDispensed": {
+          "$ref": "#/definitions/MinimumValueDispensed"
+        }
+      },
+      "required": [
+        "Organisation",
+        "ATMID",
+        "Address",
+        "GeographicLocation",
+        "SupportedLanguages",
+        "ATMServices",
+        "Currency"
+      ]
+    },
+    "Organisation": {
+      "title": "Organisation",
+      "type": "object",
+      "properties": {
+        "ParentOrganisation": {
+          "$ref": "#/definitions/ParentOrganisation"
+        },
+        "Brand": {
+          "$ref": "#/definitions/Brand"
+        }
+      },
+      "required": [
+        "ParentOrganisation",
+        "Brand"
+      ]
+    },
+    "ParentOrganisation": {
+      "title": "ParentOrganisation",
+      "type": "object",
+      "properties": {
+        "OrganisationName": {
+          "$ref": "#/definitions/OrganisationName"
+        },
+        "LEI": {
+          "description": "The LEI ID of the organisation",
+          "type": "string",
+          "pattern": "^[A-Z0-9]{18,18}[0-9]{2,2}$"
+        },
+        "BIC": {
+          "description": "The BIC from the organisation",
+          "type": "string",
+          "pattern": "[A-Z]{6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?"
+        }
+      },
+      "required": [
+        "OrganisationName"
+      ]
+    },
+    "OrganisationName": {
+      "title": "OrganisationName",
+      "type": "object",
+      "properties": {
+        "LegalName": {
+          "description": "Legal Name of the organisation",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        }
+      },
+      "required": [
+        "LegalName"
+      ]
+    },
+    "Brand": {
+      "title": "Brand",
+      "type": "object",
+      "properties": {
+        "TrademarkIPOCode": {
+          "$ref": "#/definitions/TrademarkIPOCode"
+        },
+        "TrademarkID": {
+          "description": "The trademark number that has been registered with the Intellectual Property Office. Note: The 2 letter IPO prefix should be omitted",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        }
+      },
+      "required": [
+        "TrademarkIPOCode",
+        "TrademarkID"
+      ]
+    },
+    "TrademarkIPOCode": {
+      "title": "TrademarkIPOCode",
+      "example": "UK",
+      "type": "string",
+      "enum": [
+        "UK",
+        "EU"
+      ]
+    },
+    "LocationCategory": {
+      "title": "LocationCategory",
+      "example": "Airport",
+      "type": "string",
+      "enum": [
+        "Airport",
+        "BankSpecialisedOutlet",
+        "BranchExternal",
+        "BranchInternal",
+        "BranchLobby",
+        "BureauDeChange",
+        "CoachStation",
+        "CommercialSpaceInternal",
+        "ConvenienceStore",
+        "ExhibitionCentre",
+        "FactoryOrOffice",
+        "FillingStation",
+        "FinancialInstitution",
+        "GovernmentOffice",
+        "Hospital",
+        "Hotel",
+        "KioskPod",
+        "LeisureCentre",
+        "PleasurePark",
+        "PublicHouse",
+        "RailwayStation",
+        "RemoteUnit",
+        "RetailerDepartmentStore",
+        "RetailerOutlet",
+        "SeaportTerminal",
+        "ServiceStation",
+        "ShoppingCentreExternal",
+        "ShoppingCentreInternal",
+        "StorageDepot",
+        "SupermarketExternal",
+        "SupermarketInternal",
+        "UndergroundRailwayStation",
+        "UniversityOrCollege"
+      ]
+    },
+    "Address": {
+      "title": "Address",
+      "type": "object",
+      "properties": {
+        "StreetName": {
+          "description": "Name of a street or thoroughfare",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 70
+        },
+        "PostCode": {
+          "description": "Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 16
+        },
+        "Country": {
+          "description": "Nation with its own government",
+          "type": "string",
+          "pattern": "[A-Z]{2}"
+        },
+        "BuildingNumberOrName": {
+          "description": "Number or Name that identifies the position of a building on a street",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 350
+        },
+        "OptionalAddressField": {
+          "description": "Directions for customers",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 350
+        },
+        "TownName": {
+          "description": "Name of a built-up area, with defined boundaries, and a local government",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        },
+        "CountrySubDivision": {
+          "description": "Identifies a subdivision of a country such as state, region, county",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        }
+      },
+      "required": [
+        "StreetName",
+        "PostCode",
+        "Country"
+      ]
+    },
+    "GeographicLocation": {
+      "title": "GeographicLocation",
+      "type": "object",
+      "properties": {
+        "Latitude": {
+          "description": "The Latitude measured in decimal format according to ISO 213",
+          "type": "string",
+          "pattern": "^-?\\d{1,3}\\.\\d{1,8}$"
+        },
+        "Longitude": {
+          "description": "The longitude measured in decimal format according to ISO 213",
+          "type": "string",
+          "pattern": "^-?\\d{1,3}\\.\\d{1,8}$"
+        }
+      },
+      "required": [
+        "Latitude",
+        "Longitude"
+      ]
+    },
+    "AccessibilityType": {
+      "title": "AccessibilityType",
+      "description": "Information about the accessibility",
+      "example": "AudioCashMachine",
+      "type": "string",
+      "enum": [
+        "AudioCashMachine",
+        "AutomaticDoors",
+        "ChairAccess",
+        "DriveThru",
+        "ExternalRamp",
+        "InductionLoop",
+        "InternalRamp",
+        "LevelAccess",
+        "LowerLevelCounter",
+        "WheelchairAccess"
+      ]
+    },
+    "ATMService": {
+      "title": "ATMService",
+      "description": "Information about ATM services",
+      "example": "Balance",
+      "type": "string",
+      "enum": [
+        "Balance",
+        "BillPayments",
+        "CashDeposits",
+        "CashWithdrawal",
+        "CharityDonation",
+        "ChequeBookRequest",
+        "ChequeDeposits",
+        "FastCash",
+        "MiniStatement",
+        "MobileBankingRegistration",
+        "MobilePaymentRegistration",
+        "MobilePhoneTopUp",
+        "OrderStatement",
+        "PINActivation",
+        "PINChange"
+      ]
+    },
+    "MinimumValueDispensed": {
+      "title": "MinimumValueDispensed",
+      "example": "£5",
+      "type": "string",
+      "enum": [
+        "£5",
+        "£10",
+        "£20",
+        "£50",
+        "£100"
+      ]
+    },
+    "400ErrorObject": {
+      "title": "400 Error object",
+      "type": "object",
+      "properties": {
+        "status": {
+          "description": "",
+          "example": 400,
+          "type": "integer",
+          "format": "int32"
+        },
+        "title": {
+          "description": "",
+          "example": "Bad request",
+          "type": "string"
+        },
+        "description": {
+          "description": "",
+          "example": "You have sent a request which could not be understood.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "title",
+        "description"
+      ]
+    }
+  }
+}
