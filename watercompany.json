@@ -1,29 +1,38 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "2.1.0",
-    "title": "API"
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Fuse TP3 Demo - The Water Company API",
+    "version" : "1.0.0",
+    "title" : "Water Company API"
   },
-  "host" : "water-rest-tp3demo.4b63.pro-ap-southeast-2.openshiftapps.com",
-  "schemes" : [ http, https ],
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
-  "paths": {
-    "/payment": {
-      "post": {
+  "host" : "watercompanyrest-tp3demo.4b63.pro-ap-southeast-2.openshiftapps.com",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "admins",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "developers",
+    "description" : "Operations available to regular developers"
+  } ],
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/payment" : {
+      "post" : {
+        "tags" : [ "developers" ],
         "summary": "Payment",
         "description": "Place payment request",
-        "parameters": [
-          {
-            "name": "body",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters": [{
+            "name": "paymentinfo",
             "in": "body",
             "description": "Payment details",
+            "required" : true,
             "schema": {
               "$ref": "#/definitions/Payment"
             }
-          }
-        ],
-        "responses": {
+          }],
+        "responses" : {
           "200": {
             "description": "Payment Done",
             "schema": {
@@ -37,19 +46,14 @@
             }
           }
         }
-      },
-      "parameters": [
-        {
-          "name": "sender",
-          "in": "query",
-          "description": "Identification name",
-          "required": true,
-          "type": "string"
-        }
-      ]
+        
+      }
     },
     "/balance": {
       "get": {
+        "tags" : [ "developers" ],
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
         "summary": "Balance of the account",
         "description": "Remaining balance of the user",
         "responses": {
@@ -78,7 +82,7 @@
       ]
     }
   },
-  "definitions": {
+  "definitions" : {
     "Error": {
       "required": [
         "description",
