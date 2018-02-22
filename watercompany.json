@@ -4,7 +4,7 @@
     "version": "2.1.0",
     "title": "API"
   },
-  "host" : "watercompanyrest-tp3demo.4b63.pro-ap-southeast-2.openshiftapps.com",
+  "host" : "water-rest-tp3demo.4b63.pro-ap-southeast-2.openshiftapps.com",
   "schemes" : [ "https" ],
   "consumes": ["application/json"],
   "produces": ["application/json"],
