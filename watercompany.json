@@ -5,7 +5,7 @@
     "title": "API"
   },
   "host" : "watercompanyrest-tp3demo.4b63.pro-ap-southeast-2.openshiftapps.com",
-  "schemes" : [ "http" ],
+  "schemes" : [ "https" ],
   "consumes": ["application/json"],
   "produces": ["application/json"],
   "paths": {
