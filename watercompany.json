@@ -5,7 +5,7 @@
     "title": "API"
   },
   "host" : "water-rest-tp3demo.4b63.pro-ap-southeast-2.openshiftapps.com",
-  "schemes" : [ "https" ],
+  "schemes" : [ "http","https" ],
   "consumes": ["application/json"],
   "produces": ["application/json"],
   "paths": {
