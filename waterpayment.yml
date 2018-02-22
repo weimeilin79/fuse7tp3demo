@@ -1,0 +1,73 @@
+swagger: '2.0'
+info:
+  description: Fuse TP3 Demo - Simple Post Payment
+  version: 1.0.0
+  title: Pay Water Bill
+host: watercompanyrest-tp3demo.4b63.pro-ap-southeast-2.openshiftapps.com
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /payment:
+    post:
+      tags:
+        - waterbill
+      summary: Payment
+      description: Place payment request
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: paymentinfo
+          in: body
+          description: Payment details
+          required: true
+          schema:
+            $ref: '#/definitions/Payment'
+      responses:
+        '200':
+          description: Payment Done
+          schema:
+            $ref: '#/definitions/Account'
+        '400':
+          description: error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Error:
+    required:
+      - description
+      - errorcode
+    properties:
+      errorcode:
+        description: Error Code
+        type: integer
+      description:
+        description: Reason of failure
+        type: string
+  Account:
+    required:
+      - accountid
+      - balance
+    properties:
+      accountid:
+        description: Sender name
+        type: string
+      balance:
+        description: Remaining balance
+        type: integer
+  Payment:
+    required:
+      - amount
+      - senderid
+    properties:
+      senderid:
+        description: Sender name
+        type: string
+      amount:
+        description: Amount to pay
+        type: integer
