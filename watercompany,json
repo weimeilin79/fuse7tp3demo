@@ -1,0 +1,131 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2.1.0",
+    "title": "API"
+  },
+  "host" : "watercompanyrest-tp3demo.4b63.pro-ap-southeast-2.openshiftapps.com",
+  "schemes" : [ "http" ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/payment": {
+      "post": {
+        "summary": "Payment",
+        "description": "Place payment request",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Payment details",
+            "schema": {
+              "$ref": "#/definitions/Payment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Payment Done",
+            "schema": {
+              "$ref": "#/definitions/account"
+            }
+          },
+          "400": {
+            "description": "error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "sender",
+          "in": "query",
+          "description": "Identification name",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/balance": {
+      "get": {
+        "summary": "Balance of the account",
+        "description": "Remaining balance of the user",
+        "responses": {
+          "200": {
+            "description": "Balance successfully returned.",
+            "schema": {
+              "$ref": "#/definitions/account"
+            }
+          },
+          "400": {
+            "description": "Balance not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "sender",
+          "in": "query",
+          "description": "Identification name",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "Error": {
+      "required": [
+        "description",
+        "errorcode"
+      ],
+      "properties": {
+        "errorcode": {
+          "description": "Error Code",
+          "type": "integer"
+        },
+        "description": {
+          "description": "Reason of failure",
+          "type": "string"
+        }
+      }
+    },
+    "account": {
+      "required": [
+        "accountid",
+        "balance"
+      ],
+      "properties": {
+        "accountid": {
+          "description": "Sender name",
+          "type": "string"
+        },
+        "balance": {
+          "description": "Remaining balance",
+          "type": "integer"
+        }
+      }
+    },
+    "Payment": {
+      "required": [
+        "amount",
+        "senderid"
+      ],
+      "properties": {
+        "senderid": {
+          "description": "Sender name",
+          "type": "string"
+        },
+        "amount": {
+          "description": "Amount to pay",
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
