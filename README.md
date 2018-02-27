@@ -22,7 +22,7 @@ The **Water Company** API has a backend dashboard that display all the payment. 
 (Data cleans every three hours.)
 https://water-company-tp3demo.4b63.pro-ap-southeast-2.openshiftapps.com/main
 
-![Demo 37](pic/demo037.png)
+![Demo 37](pic/demo37.png)
 
 ## Low Code Integration
 
