@@ -1,6 +1,6 @@
-#Simple SaaS integration with Swagger Document
+# Simple SaaS integration with Swagger Document
 
-##Prerequisites
+## Prerequisites
 * A valid [Fuse Online](https://www.redhat.com/en/explore/fuse-online) account 
 
 ## Background
@@ -145,3 +145,7 @@ Delete all entry in frontend TODO application
 
 Deactivate the integration.
 ![Demo 36](pic/demo36.png)
+
+## Resource
+[Fuse Online] (https://www.redhat.com/en/explore/fuse-online) - https://www.redhat.com/en/explore/fuse-online
+[Demo Video](https://vimeo.com/257550267) - https://vimeo.com/257550267
